@@ -1,0 +1,5 @@
+test_app_news:
+    resource: "@TestAppNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
