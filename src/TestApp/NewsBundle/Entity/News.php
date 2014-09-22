@@ -3,6 +3,7 @@
 namespace TestApp\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * News
@@ -45,9 +46,16 @@ class News
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    private $date;
+    private $created;
+
+    /**
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
 
 
     /**
@@ -135,9 +143,9 @@ class News
      * @param \DateTime $date
      * @return News
      */
-    public function setDate($date)
+    public function setCreated($date)
     {
-        $this->date = $date;
+        $this->created = $date;
 
         return $this;
     }
@@ -147,8 +155,29 @@ class News
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getCreated()
     {
-        return $this->date;
+        return $this->created;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set update date
+     *
+     * @param \DateTime $date
+     * @return News
+     */
+    public function setUpdated($date)
+    {
+        $this->updated = $date;
+
+        return $this;
     }
 }
